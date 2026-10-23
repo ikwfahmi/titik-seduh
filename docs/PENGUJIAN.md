@@ -1,6 +1,6 @@
 # Hasil pengujian Titik Seduh
 
-Tanggal: 23 Oktober 2026. Flutter 3.47.7 stable, Dart 3.13.5. UI final memakai gaya kartun krem dan cokelat sesuai referensi pengguna.
+Tanggal: 23 Oktober 2026. Flutter 3.47.7 stable, Dart 3.13.5. Antarmuka menggunakan gaya kartun dengan warna krem dan cokelat.
 
 ## Pengujian otomatis
 
@@ -24,7 +24,7 @@ HTTP dan parsing model berhasil: 874 kafe, 5 wilayah.
 Contoh: Kollabora | The Best Thematic Cafe & Restaurant in Indonesia
 ```
 
-Flutter Web versi awal telah memuat 874 data dari endpoint asli, menemukan satu hasil untuk Kollabora, membuka detail, dan menampilkan kafe pada koleksi favorit. Screenshot berlabel `web` adalah versi UI awal; laporan final menggunakan screenshot Android dengan UI kartun terbaru.
+Flutter Web versi awal telah memuat 874 data dari endpoint asli, menemukan satu hasil untuk Kollabora, membuka detail, dan menampilkan kafe pada koleksi favorit. Screenshot berlabel `web` adalah versi UI awal; screenshot Android menampilkan UI kartun terbaru.
 
 Pada Android API 34 emulator Pixel, APK debug berhasil dipasang dan UI final menampilkan 874 data dari API asli. Screenshot Android ada pada folder `screenshots/`. Daftar, pencarian, detail, dan favorit diperiksa melalui UI aplikasi, bukan halaman mockup.
 
@@ -48,4 +48,4 @@ Periksa loading saat membuka aplikasi, cari nama kafe, pilih wilayah dan rating,
 
 ## Batas pemeriksaan
 
-Build dan pemeriksaan runtime dilakukan pada Android emulator API 34 serta Flutter Web. Build iOS/macOS/Windows tidak dijalankan di lingkungan Linux ini. Pengujian pada ponsel fisik belum dilakukan. Tidak ada pengukuran performa, audit API, atau jaminan kebenaran isi data penyedia API. Upload GitHub dan Google Drive belum dilakukan.
+Build dan pemeriksaan runtime dilakukan pada Android emulator API 34 serta Flutter Web. Build iOS/macOS/Windows tidak dijalankan di lingkungan Linux ini. Pengujian pada ponsel fisik belum dilakukan. Tidak ada pengukuran performa, audit API, atau jaminan kebenaran isi data penyedia API.

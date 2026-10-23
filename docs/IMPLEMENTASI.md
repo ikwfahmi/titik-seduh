@@ -1,6 +1,6 @@
 # Catatan implementasi Titik Seduh
 
-Dokumen ini menjadi bahan teknis untuk menyusun laporan pada kerangka UTS yang disediakan. Tangkapan layar ada di folder `screenshots/`; hasil pengujian terpisah ada di `PENGUJIAN.md`.
+Dokumen ini menjelaskan arsitektur, antarmuka, dan alur pengambilan data aplikasi. Tangkapan layar ada di folder `screenshots/`; hasil pengujian tersedia di [PENGUJIAN.md](PENGUJIAN.md).
 
 ## Gambaran aplikasi dan tujuan
 
@@ -14,14 +14,14 @@ Project dibuat dengan nama aplikasi **TITIK SEDUH** menggunakan Flutter dan Dart
 
 Tema menggunakan latar krem, teks cokelat, dan aksen terakota lembut. Halaman utama memuat identitas aplikasi, ilustrasi dekoratif, pencarian, filter wilayah, filter rating/24 jam, pengurutan, dan daftar kartu. Navigasi bawah berpindah antara Jelajahi dan Favorit. Pada layar lebar kartu menjadi grid; pada ponsel menjadi daftar vertikal. Halaman detail dibuka menggunakan Navigator dan MaterialPageRoute.
 
-Gambar yang dapat digunakan pada subbab 2.2 laporan:
+Tangkapan layar fitur aplikasi:
 
-1. **Gambar 2.1 Halaman Jelajahi** — `screenshots/01-beranda-android.png`: daftar dinamis dan kontrol pencarian/filter. Jumlah tempat mengikuti respons API.
-2. **Gambar 2.2 Hasil pencarian kafe** — `screenshots/03-pencarian-android.png`: pencarian Kollabora menghasilkan satu tempat dari data API pada saat pengujian.
-3. **Gambar 2.3 Halaman detail kafe** — `screenshots/04-detail-android.png`: nama lengkap, rating, harga, alamat, informasi jam, dan tombol peta.
-4. **Gambar 2.4 Halaman Favorit** — `screenshots/05-favorit-android.png`: kafe yang disimpan pada perangkat dan tetap tersedia setelah aplikasi dibuka kembali.
+1. **Halaman Jelajahi** — `screenshots/01-beranda-android.png`: daftar dinamis dan kontrol pencarian/filter. Jumlah tempat mengikuti respons API.
+2. **Hasil pencarian kafe** — `screenshots/03-pencarian-android.png`: pencarian Kollabora menghasilkan satu tempat dari data API pada saat pengujian.
+3. **Halaman detail kafe** — `screenshots/04-detail-android.png`: nama lengkap, rating, harga, alamat, informasi jam, dan tombol peta.
+4. **Halaman Favorit** — `screenshots/05-favorit-android.png`: kafe yang disimpan pada perangkat dan tetap tersedia setelah aplikasi dibuka kembali.
 
-Screenshot laporan berasal dari aplikasi Android pada emulator API 34 resolusi 1080 × 1920. Tampilan mengikuti referensi pengguna dengan gerobak kopi kartun dan pola biji kopi yang digambar lokal. Screenshot berlabel `web` merupakan versi UI awal dan tidak digunakan pada laporan final.
+Screenshot Android diambil pada emulator API 34 dengan resolusi 1080 × 1920. Antarmuka menggunakan gerobak kopi kartun dan pola biji kopi yang digambar lokal. Screenshot berlabel `web` merupakan versi UI awal.
 
 ## Struktur API
 
@@ -66,7 +66,7 @@ if (response.statusCode != 200) {
 final json = jsonDecode(utf8.decode(response.bodyBytes));
 ```
 
-Setelah validasi array dan objek, setiap elemen diteruskan ke `Cafe.fromJson`. Model mewajibkan ID dan nama yang valid, mengonversi angka dengan aman, memproses daftar fasilitas, serta memberi nilai kosong pada atribut opsional. Rating nol dianggap belum dinilai. Lihat `lib/models/cafe.dart` dan `lib/services/cafe_service.dart` untuk kode lengkap yang menjadi sumber pembahasan.
+Setelah validasi array dan objek, setiap elemen diteruskan ke `Cafe.fromJson`. Model mewajibkan ID dan nama yang valid, mengonversi angka dengan aman, memproses daftar fasilitas, serta memberi nilai kosong pada atribut opsional. Rating nol dianggap belum dinilai. Implementasi lengkap tersedia di `lib/models/cafe.dart` dan `lib/services/cafe_service.dart`.
 
 ## Asynchronous programming dan FutureBuilder
 
@@ -103,8 +103,6 @@ Favorit menyimpan daftar ID melalui SharedPreferences. Tampilan diperbarui setel
 
 Tombol peta membuka URL HTTPS Google Maps dari model. Jika URL tidak valid, model dapat membuat URL pencarian berdasarkan koordinat. Jika aplikasi peta gagal dibuka, Snackbar menawarkan penyalinan tautan. Data jam tidak dihitung sebagai status buka sekarang karena API hanya menyediakan teks dan tidak menyediakan jadwal terstruktur.
 
-## Kesimpulan dan pengembangan lanjutan
+## Pengembangan lanjutan
 
-Aplikasi telah menyediakan GUI, pengambilan HTTP asinkron, konversi JSON melalui model, tampilan data API, serta penanganan loading/sukses/error menggunakan FutureBuilder. Bukti keberhasilan harus mengacu pada hasil aktual di PENGUJIAN.md. Pengembangan selanjutnya dapat menambahkan cache offline, sinkronisasi favorit, foto yang disediakan sumber, dan jadwal terstruktur untuk perhitungan status buka.
-
-Daftar pustaka dapat memakai referensi resmi yang tertera di README.
+Aplikasi menyediakan GUI, pengambilan HTTP asinkron, konversi JSON melalui model, tampilan data API, serta penanganan loading/sukses/error menggunakan FutureBuilder. Hasil pengujian tersedia di [PENGUJIAN.md](PENGUJIAN.md). Pengembangan selanjutnya dapat menambahkan cache offline, sinkronisasi favorit, foto yang disediakan sumber, dan jadwal terstruktur untuk perhitungan status buka.

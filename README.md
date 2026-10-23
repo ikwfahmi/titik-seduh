@@ -1,6 +1,6 @@
 # Titik Seduh
 
-Aplikasi Flutter untuk menemukan kafe di Surabaya melalui Surabaya Cafe API. Dibuat untuk UTS Pemrograman Mobile kelas C oleh **M. Ikhwan Fahmi (240605110116)**, Teknik Informatika UIN Maulana Malik Ibrahim Malang, tahun 2026.
+Aplikasi Flutter untuk menemukan kafe di Surabaya melalui Surabaya Cafe API. Pengguna dapat menelusuri kafe, membandingkan informasi, menyimpan favorit, dan membuka lokasi melalui Google Maps.
 
 ## Fitur utama
 
@@ -71,7 +71,7 @@ flutter build apk --release
 flutter build web --no-web-resources-cdn
 ```
 
-APK debug dihasilkan di `build/app/outputs/flutter-apk/app-debug.apk`; APK release di `build/app/outputs/flutter-apk/app-release.apk`. Build release masih memakai debug signing bawaan untuk demonstrasi UTS; siapkan signing key sendiri jika akan diterbitkan ke Play Store.
+APK debug dihasilkan di `build/app/outputs/flutter-apk/app-debug.apk`; APK release di `build/app/outputs/flutter-apk/app-release.apk`. Build release masih memakai debug signing bawaan untuk pengembangan; siapkan signing key sendiri jika akan diterbitkan ke Play Store.
 
 Hasil pengujian dan langkah reproduksi tersedia di [docs/PENGUJIAN.md](docs/PENGUJIAN.md).
 
@@ -96,7 +96,7 @@ Halaman dibuka / muat ulang
   → kartu kafe → halaman detail → Google Maps
 ```
 
-`Future` dibuat di `initState` dan diganti hanya ketika pengguna memuat ulang. Pengetikan, filter, dan perubahan favorit tidak membuat permintaan HTTP tambahan. Struktur model, contoh JSON, dan potongan kode untuk bahan laporan tersedia di [docs/IMPLEMENTASI.md](docs/IMPLEMENTASI.md).
+`Future` dibuat di `initState` dan diganti hanya ketika pengguna memuat ulang. Pengetikan, filter, dan perubahan favorit tidak membuat permintaan HTTP tambahan. Penjelasan struktur model, contoh JSON, dan cara kerja aplikasi tersedia di [docs/IMPLEMENTASI.md](docs/IMPLEMENTASI.md).
 
 ## Struktur project
 
@@ -135,10 +135,6 @@ Halaman dibuka / muat ulang
 - Beberapa alamat dari API masih berupa kategori tempat. Aplikasi menampilkan data sumber dan menyediakan tautan peta untuk pemeriksaan lebih lanjut.
 - Rating, status verifikasi, dan tanggal verifikasi mengikuti API; badge verifikasi bukan klaim verifikasi mandiri oleh pengembang.
 - Favorit disimpan sebagai ID di perangkat/browser ini, tanpa sinkronisasi antarperangkat dan tanpa cache offline daftar kafe.
-
-## Pengumpulan UTS
-
-Source code, README, pengujian, dan screenshot tersedia di repositori [ikwfahmi/titik-seduh](https://github.com/ikwfahmi/titik-seduh). Laporan DOCX/PDF disiapkan terpisah sesuai kerangka UTS; unggah PDF ke Google Drive dengan akses **Anyone with the link → Viewer**. Uji kedua tautan sebelum dikumpulkan. Hasil pemeriksaan seluruh bab dan status pengumpulan tersedia di [docs/CROSS_CHECK_UTS.md](docs/CROSS_CHECK_UTS.md). Folder `build/`, `.dart_tool/`, dan konfigurasi SDK lokal tidak disertakan dalam repositori.
 
 ## Referensi
 
